@@ -63,7 +63,7 @@ const Navbar = ({ language, toggleLanguage }) => {
             <ul className="navbar-nav ms-auto navcontentmain">
               <li className="nav-item navcontent">
                 <NavLink
-                  to="/home"
+                  to="/"
                   className={({ isActive }) =>
                     isActive ? "nav-link active-nav-link" : "nav-link"
                   }
@@ -104,7 +104,7 @@ const Navbar = ({ language, toggleLanguage }) => {
               </li>
               <li className="nav-item navcontent">
                 <NavLink
-                  to="/#videos"
+                  to="/videos"
                   className={({ isActive }) =>
                     isActive ? "nav-link active-nav-link" : "nav-link"
                   }
@@ -147,7 +147,7 @@ const Navbar = ({ language, toggleLanguage }) => {
           <ul className="navbar-nav">
             <li className="nav-item navcontent">
               <NavLink
-                to="/home"
+                to="/"
                 onClick={toggleMenu}
                 className={({ isActive }) =>
                   isActive ? "nav-link active-nav-link" : "nav-link"

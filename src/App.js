@@ -22,7 +22,7 @@ function App() {
         
         <Routes>
           {/* Pass language to all pages */}
-          <Route path="/home" element={<Home language={language} />} />
+          <Route path="/" element={<Home language={language} />} />
           <Route path="/about" element={<About language={language} />} />
         </Routes>
         
