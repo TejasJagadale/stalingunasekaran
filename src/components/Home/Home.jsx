@@ -431,6 +431,7 @@ const Home = ({ language }) => {
         </motion.div>
 
         <div className="right-images">
+          
           {slides.map((slide, index) => (
             <div
               key={slide.id}
