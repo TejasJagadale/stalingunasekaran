@@ -4,13 +4,12 @@ import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import "./Home.css";
 import { useMediaQuery } from "react-responsive";
-import RotatingText from "../RotatingText/RotatingText";
 
-const Home = () => {
+const Home = ({ language }) => {
+  // const [language, setLanguage] = useState('tamil');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState("tab-1");
   const [currentPage, setCurrentPage] = useState(0);
-  const [slideDirection, setSlideDirection] = useState(1);
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -161,7 +160,8 @@ const Home = () => {
     () => [
       {
         id: "articles",
-        title: "கட்டுரைகள்",
+        titleeng: "articles",
+        titletamil: "கட்டுரைகள்",
         items: [
           {
             id: 1,
@@ -191,7 +191,8 @@ const Home = () => {
       },
       {
         id: "texts",
-        title: "உரைகள்",
+        titleeng: "texts",
+        titletamil: "உரைகள்",
         items: [
           {
             id: 1,
@@ -221,7 +222,8 @@ const Home = () => {
       },
       {
         id: "interviews",
-        title: "பேட்டிகள்",
+        titleeng: "interviews",
+        titletamil: "பேட்டிகள்",
         items: [
           {
             id: 1,
@@ -251,7 +253,8 @@ const Home = () => {
       },
       {
         id: "news",
-        title: "செய்திகள்",
+        titleeng: "news",
+        titletamil: "செய்திகள்",
         items: [
           {
             id: 1,
@@ -304,21 +307,9 @@ const Home = () => {
     },
     {
       id: 4,
-      youtubeId: "dQw4w9WgXcQ",
+      youtubeId: "QGjB81xaxAo",
       tamilTitle: "மாதிரி வீடியோ 1",
       englishTitle: "Sample Video 1"
-    },
-    {
-      id: 5,
-      youtubeId: "9bZkp7q19f0",
-      tamilTitle: "மாதிரி வீடியோ 2",
-      englishTitle: "Sample Video 2"
-    },
-    {
-      id: 6,
-      youtubeId: "JGwWNGJdvx8",
-      tamilTitle: "மாதிரி வீடியோ 3",
-      englishTitle: "Sample Video 3"
     }
   ];
   const counterItems = [
@@ -326,7 +317,8 @@ const Home = () => {
       id: 1,
       icon: "/images/books.png",
       count: 30,
-      title: "படைப்புகள்",
+      titletamil: "படைப்புகள்",
+      titleeng: "Books",
       link: "creations.php",
       color: "var(--primary)"
     },
@@ -334,7 +326,8 @@ const Home = () => {
       id: 2,
       icon: "/images/script.png",
       count: 20,
-      title: "கட்டுரைகள்",
+      titletamil: "கட்டுரைகள்",
+      titleeng: "Articles",
       link: "articles.php",
       color: "var(--secondary)"
     },
@@ -342,7 +335,8 @@ const Home = () => {
       id: 3,
       icon: "/images/multimedia.png",
       count: 25,
-      title: "வீடியோக்கள்",
+      titletamil: "வீடியோக்கள்",
+      titleeng: "Videos",
       link: "index.php#videos",
       color: "var(--tertiary)"
     },
@@ -350,7 +344,8 @@ const Home = () => {
       id: 4,
       icon: "/images/gallery.png",
       count: 100,
-      title: "புகைபடங்கள்",
+      titletamil: "புகைபடங்கள்",
+      titleeng: "Photos",
       link: "gallery.php",
       color: "var(--quaternary)"
     },
@@ -358,7 +353,8 @@ const Home = () => {
       id: 5,
       icon: "/images/trophy.png",
       count: 50,
-      title: "விருதுகள் மற்றும் அங்கீகாரங்கள்",
+      titletamil: "விருதுகள் மற்றும் அங்கீகாரங்கள்",
+      titleeng: "Awards and Recognition",
       link: "awards-recognition.php",
       color: "var(--quinary)"
     }
@@ -410,23 +406,27 @@ const Home = () => {
           variants={containerVariants}
         >
           <motion.h1 className="name fosi1" variants={itemVariants}>
-            த.ஸ்டாலின் குணசேகரன்
+            {language === "tamil"
+              ? "த.ஸ்டாலின் குணசேகரன்"
+              : "T. Stalin Gunasekaran"}
           </motion.h1>
           <motion.h2 className="designation fosi2" variants={itemVariants}>
-            பேச்சாளர் | எழுத்தாளர் | வழக்குரைஞர்
+            {language === "tamil"
+              ? "பேச்சாளர் | எழுத்தாளர் | வழக்குரைஞர்"
+              : "Speaker | Writer | Lawyer"}
           </motion.h2>
           <motion.p className="experience fosi2" variants={itemVariants}>
-            கடந்த 40 ஆண்டுகளாக பல்வேறு தளங்களில் பயணித்து வரும் ஒரு சிறந்த
-            பேச்சாளர்
+            {language === "tamil"
+              ? "கடந்த 40 ஆண்டுகளாக பல்வேறு தளங்களில் பயணித்து வரும் ஒரு சிறந்த பேச்சாளர்"
+              : "An outstanding speaker who has been traveling across various platforms for the past 40 years"}
           </motion.p>
           <motion.button
             className="animated-button"
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            // onClick={() => (window.location.href = "about.html")}
           >
-            மேலும் அறிய
+            {language === "tamil" ? "மேலும் அறிய" : "Learn More"}
           </motion.button>
         </motion.div>
 
@@ -460,15 +460,9 @@ const Home = () => {
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  த.ஸ்டாலின் குணசேகரன் பற்றி
-                </motion.span>
-                <motion.span
-                  className="content-english"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  About T. Stalin Gunasekaran
+                  {language === "tamil"
+                    ? "த.ஸ்டாலின் குணசேகரன் பற்றி"
+                    : "About T. Stalin Gunasekaran"}
                 </motion.span>
               </h2>
             </div>
@@ -484,7 +478,7 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <motion.img
-                src="/images/img2.jpg"
+                src="/images/img4.jpg"
                 alt="T. Stalin Gunasekaran"
                 className="img-fluid rounded shadow-lg"
                 whileHover={{ scale: 1.02 }}
@@ -517,10 +511,9 @@ const Home = () => {
                     visible: { opacity: 1, y: 0 }
                   }}
                 >
-                  ஈரோட்டைச் சேர்ந்த த.ஸ்டாலின் குணசேகரன் பள்ளிக் காலத்திலேயே
-                  பொதுமேடைகளில் பேசத் தொடங்கியவர். கல்லூரி மாணவராக விளங்கிய போதே
-                  பிற கல்லூரிகள் மற்றும் பொதுஅமைப்புகளின் அழைப்பின் பேரில்
-                  முக்கிய நிகழ்வுகளில் சொற்பொழிவுகள் நிகழ்த்தி வந்தார்.
+                  {language === "tamil"
+                    ? "ஈரோட்டைச் சேர்ந்த த.ஸ்டாலின் குணசேகரன் பள்ளிக் காலத்திலேயேபொதுமேடைகளில் பேசத் தொடங்கியவர். கல்லூரி மாணவராக விளங்கிய போதே பிற கல்லூரிகள் மற்றும் பொதுஅமைப்புகளின் அழைப்பின் பேரில்முக்கிய நிகழ்வுகளில் சொற்பொழிவுகள் நிகழ்த்தி வந்தார்."
+                    : "T. Stalin Gunasekaran from Erode began speaking at publicforums during his school days. During his college years, he delivered speeches at major events upon invitations from othercolleges and public organizations."}
                 </motion.p>
                 <motion.p
                   className="fosi2"
@@ -529,37 +522,9 @@ const Home = () => {
                     visible: { opacity: 1, y: 0 }
                   }}
                 >
-                  இளம் வயதிலேயே தனது பேச்சுப்பயணத்தைத் தொடங்கிய இவர் கல்வி,
-                  வரலாறு, கலை, இலக்கியம், அறிவியல், அரசியல், சமூகவியல்,
-                  வாழ்வியல், ஆளுமை மேம்பாடு உள்ளிட்ட பல்வகைத் தலைப்புகளில் கடந்த
-                  40 ஆண்டுகளாகத் தொடர்ந்து உரை நிகழ்த்தி வருகிறார்.
-                </motion.p>
-              </div>
-              <div className="content-english">
-                <motion.p
-                  className="fosi2"
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                >
-                  T. Stalin Gunasekaran from Erode began speaking at public
-                  forums during his school days. During his college years, he
-                  delivered speeches at major events upon invitations from other
-                  colleges and public organizations.
-                </motion.p>
-                <motion.p
-                  className="fosi2"
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                >
-                  Starting his speaking journey at a young age, he has been
-                  continuously delivering speeches for the past 40 years on
-                  various topics including education, history, art, literature,
-                  science, politics, sociology, lifestyle, and personality
-                  development.
+                  {language === "tamil"
+                    ? "இளம் வயதிலேயே தனது பேச்சுப்பயணத்தைத் தொடங்கிய இவர் கல்வி,வரலாறு, கலை, இலக்கியம், அறிவியல், அரசியல், சமூகவியல், வாழ்வியல், ஆளுமை மேம்பாடு உள்ளிட்ட பல்வகைத் தலைப்புகளில் கடந்த 40 ஆண்டுகளாகத் தொடர்ந்து உரை நிகழ்த்தி வருகிறார்."
+                    : "  Starting his speaking journey at a young age, he has been continuously delivering speeches for the past 40 years on various topics including education, history, art, literature, science, politics, sociology, lifestyle, and personality development."}
                 </motion.p>
               </div>
 
@@ -577,8 +542,10 @@ const Home = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="content-tamil butonu">நூல்களைக் காண</span>
-                  <span className="content-english">View Books</span>
+                  <span className="content-tamil butonu">
+                    {" "}
+                    {language === "tamil" ? "நூல்களைக் காண" : "View Books"}{" "}
+                  </span>
                 </motion.a>
                 <motion.a
                   href="#meetings"
@@ -586,8 +553,9 @@ const Home = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="content-tamil ">சந்திப்புகள்</span>
-                  <span className="content-english">Meetings</span>
+                  <span className="content-tamil ">
+                    {language === "tamil" ? "சந்திப்புகள்" : "Meetings"}
+                  </span>
                 </motion.a>
               </motion.div>
             </motion.div>
@@ -612,7 +580,7 @@ const Home = () => {
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  வாழ்க்கைப் பயணம்
+                  {language === "tamil" ? "வாழ்க்கைப் பயணம்" : "Life journey"}
                 </motion.span>
               </h2>
             </div>
@@ -652,16 +620,9 @@ const Home = () => {
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
                       >
-                        சிக்கய்ய நாயக்கர் கல்லுரி மாணவர் பேரவைத் தலைவராக
-                        மாணவர்களால் தேர்ந்தெடுக்கபட்டுப் பணியாற்றினார்
-                      </motion.p>
-                      <motion.p
-                        className="content-english"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                      >
-                        Started speaking on public platforms during school days.
+                        {language === "tamil"
+                          ? "சிக்கய்ய நாயக்கர் கல்லுரி மாணவர் பேரவைத் தலைவராக மாணவர்களால் தேர்ந்தெடுக்கபட்டுப் பணியாற்றினார்"
+                          : "Started speaking on public platforms during school days."}
                       </motion.p>
                     </div>
                   </motion.div>
@@ -698,16 +659,9 @@ const Home = () => {
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
                       >
-                        தலை சிறந்த இளம் பேச்சாளர் ' என்ற ஜேசீஸ் விருது பெற்றார்
-                      </motion.p>
-                      <motion.p
-                        className="content-english"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                      >
-                        Delivered speeches at major events upon invitations from
-                        colleges and public organizations.
+                        {language === "tamil"
+                          ? "தலை சிறந்த இளம் பேச்சாளர் ' என்ற ஜேசீஸ் விருது பெற்றார்"
+                          : "Delivered speeches at major events upon invitations from colleges and public organizations."}
                       </motion.p>
                     </div>
                   </motion.div>
@@ -744,15 +698,9 @@ const Home = () => {
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
                       >
-                        'தலை சிறந்த இளைஞர்' என்ற ஜேசீஸ் விருது வழங்கப்பட்டது .
-                      </motion.p>
-                      <motion.p
-                        className="content-english"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                      >
-                        Publication of 'Jeeva - Muzhakkam'
+                        {language === "tamil"
+                          ? "தலை சிறந்த இளைஞர்' என்ற ஜேசீஸ் விருது வழங்கப்பட்டது ."
+                          : "Publication of 'Jeeva - Muzhakkam'"}
                       </motion.p>
                     </div>
                   </motion.div>
@@ -789,16 +737,9 @@ const Home = () => {
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
                       >
-                        ஈரோடு தமிழ்ச் சங்கப் பேரவை சார்பில் 'சாதனைச் செம்மல்
-                        விருது' வழங்கப்பட்டது .
-                      </motion.p>
-                      <motion.p
-                        className="content-english"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                      >
-                        Wrote and published several important books
+                        {language === "tamil"
+                          ? "ஈரோடு தமிழ்ச் சங்கப் பேரவை சார்பில் 'சாதனைச் செம்மல் விருது' வழங்கப்பட்டது ."
+                          : "Wrote and published several important books"}
                       </motion.p>
                     </div>
                   </motion.div>
@@ -835,17 +776,9 @@ const Home = () => {
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
                       >
-                        ரோட்டரி சங்கத்தின் உயர் விருதான 'For the sake of honour'
-                        என்ற விருது இவரது சமூக சேவையைப் பாராட்டி வழங்கப்பட்டது .
-                      </motion.p>
-                      <motion.p
-                        className="content-english"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                      >
-                        Has been an excellent orator across various platforms
-                        for the past 40 years
+                        {language === "tamil"
+                          ? "ரோட்டரி சங்கத்தின் உயர் விருதான 'For the sake of honour' என்ற விருது இவரது சமூக சேவையைப் பாராட்டி வழங்கப்பட்டது ."
+                          : "Has been an excellent orator across various platforms for the past 40 years"}
                       </motion.p>
                     </div>
                   </motion.div>
@@ -854,7 +787,7 @@ const Home = () => {
             </div>
           </div>
 
-          {/* See All Button with animation */}
+          {/* எல்லாவற்றையும் காண்க Button with animation */}
           <motion.div
             className="mt-auto text-end"
             initial={{ opacity: 0 }}
@@ -864,11 +797,16 @@ const Home = () => {
           >
             <motion.a
               href="all-books.html"
-              className="btn btn-outline-primary btn-sm"
-              whileHover={{ scale: 1.05 }}
+              className="btn-learn-more"
+              whileHover={{ scale: 1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <i className="fas fa-arrow-right me-1"></i> See All
+              <span className="circle" aria-hidden="true">
+                <span className="icon arrow"></span>
+              </span>
+              <span className="button-text">
+                <i className="fas fa-arrow-right me-1"></i> Learn more
+              </span>
             </motion.a>
           </motion.div>
         </div>
@@ -885,9 +823,10 @@ const Home = () => {
             <div className="col-lg-8 text-start">
               <h2 className="section-title fosi1 fw-bold">
                 <span className="content-tamil kurippu">
-                  குறிப்பிடத்தக்க சந்திப்புகள்
+                  {language === "tamil"
+                    ? "குறிப்பிடத்தக்க சந்திப்புகள்"
+                    : "Notable Meetings"}
                 </span>
-                <span className="content-english">Notable Meetings</span>
               </h2>
             </div>
           </motion.div>
@@ -911,22 +850,21 @@ const Home = () => {
                   <div className="card-body text-start d-flex flex-column justify-content-between align-items-start">
                     <h4 className="card-title">
                       <span className="content-tamil fosi21">
-                        {meeting.tamilTitle}
-                      </span>
-                      <span className="content-english">
-                        {meeting.englishTitle}
+                        {language === "tamil"
+                          ? meeting.tamilTitle
+                          : meeting.englishTitle}
                       </span>
                     </h4>
                     <h6 className="text-muted">{meeting.year}</h6>
                     <p className="card-text content-tamil fosi3">
-                      {meeting.tamilText}
-                    </p>
-                    <p className="card-text content-english">
-                      {meeting.englishText}
+                      {language === "tamil"
+                        ? meeting.tamilText
+                        : meeting.englishText}
                     </p>
                     <a href={meeting.pdfLink} className="animated-button mt-3">
-                      <span className="">மேலும் பார்க்க</span>
-                      <span className="content-english">Read More</span>
+                      <span className="">
+                        {language === "tamil" ? "மேலும் பார்க்க" : "Read More"}
+                      </span>
                     </a>
                   </div>
                 </div>
@@ -938,12 +876,23 @@ const Home = () => {
             className="mt-auto text-end"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
+            transition={{ delay: 0.8 }}
             viewport={{ once: true }}
           >
-            <a href="all-books.html" className="btn btn-outline-primary btn-sm">
-              <i className="fas fa-arrow-right me-1"></i> See All
-            </a>
+            <motion.a
+              href="all-books.html"
+              className="btn-learn-more"
+              whileHover={{ scale: 1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="circle" aria-hidden="true">
+                <span className="icon arrow"></span>
+              </span>
+              <span className="button-text">
+                <i className="fas fa-arrow-right me-1"></i>
+                {language === "tamil" ? "மேலும் பார்க்க" : "Learn more"}
+              </span>
+            </motion.a>
           </motion.div>
         </div>
       </section>
@@ -958,8 +907,9 @@ const Home = () => {
           >
             <div className="col-lg-8 text-left">
               <h2 className="section-title fosi1 fw-bold">
-                <span className="content-tamil fosi1 noolgal">நூல்கள்</span>
-                <span className="content-english">Books</span>
+                <span className="content-tamil fosi1 noolgal">
+                  {language === "tamil" ? "நூல்கள்" : "Books"}{" "}
+                </span>
               </h2>
             </div>
           </motion.div>
@@ -1004,18 +954,16 @@ const Home = () => {
                         <div className="text-start">
                           <h4 className="card-title">
                             <span className="content-tamil fosi21">
-                              {book.tamilTitle}
-                            </span>
-                            <span className="content-english">
-                              {book.englishTitle}
+                              {language === "tamil"
+                                ? book.tamilTitle
+                                : book.englishTitle}
                             </span>
                           </h4>
                           <h6 className="text-muted">{book.year}</h6>
                           <p className="card-text content-tamil fs-6">
-                            {book.tamilDescription}
-                          </p>
-                          <p className="card-text content-english">
-                            {book.englishDescription}
+                            {language === "tamil"
+                              ? book.tamilDescription
+                              : book.englishDescription}
                           </p>
                         </div>
                         <div
@@ -1024,15 +972,30 @@ const Home = () => {
                           }
                         >
                           {book.isSeeAll ? (
-                            <motion.a
-                              href="all-books.html"
-                              className="btn btn-outline-primary btn-sm hover-effect-btn"
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
+                            <motion.div
+                              className="mt-auto text-end"
+                              initial={{ opacity: 0 }}
+                              whileInView={{ opacity: 1 }}
+                              transition={{ delay: 0.8 }}
+                              viewport={{ once: true }}
                             >
-                              <i className="fas fa-arrow-right me-1"></i> See
-                              All
-                            </motion.a>
+                              <motion.a
+                                href="all-books.html"
+                                className="btn-learn-more"
+                                whileHover={{ scale: 1 }}
+                                whileTap={{ scale: 0.95 }}
+                              >
+                                <span className="circle" aria-hidden="true">
+                                  <span className="icon arrow"></span>
+                                </span>
+                                <span className="button-text">
+                                  <i className="fas fa-arrow-right me-1"></i>{" "}
+                                  {language === "tamil"
+                                    ? "மேலும் பார்க்க"
+                                    : "Learn more"}
+                                </span>
+                              </motion.a>
+                            </motion.div>
                           ) : (
                             <motion.a
                               href={book.downloadLink}
@@ -1070,97 +1033,107 @@ const Home = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              இதழ்கள்
+              {language === "tamil" ? "இதழ்கள்" : "Pages"}
             </motion.h2>
           </div>
 
-          {/* Nav Tabs */}
-          <ul
-            className="nav nav-tabs row g-2 d-flex justify-content-center mb-4"
-            role="tablist"
-          >
-            {tabData.map((tab) => (
-              <motion.li
-                key={tab.id}
-                className="nav-item col-3 text-center d-flex justify-content-center"
-                role="presentation"
-                whileHover={{ scale: 1.05 }}
-              >
-                <button
-                  className={`nav-link ${
-                    activeTab === tab.id ? "active show" : ""
-                  }`}
-                  onClick={() => setActiveTab(tab.id)}
-                  aria-selected={activeTab === tab.id}
-                  role="tab"
-                >
-                  <motion.h4
-                    className="idhal"
-                    animate={{
-                      color: activeTab === tab.id ? "#000" : "#000"
-                    }}
-                    transition={{ duration: 0.3 }}
+          <div className="row d-flex justify-content-between">
+            {/* Left Column - Tab Buttons */}
+            <div className="col-md-2">
+              <ul className="nav nav-tabs flex-column" role="tablist">
+                {tabData.map((tab) => (
+                  <motion.li
+                    key={tab.id}
+                    className="nav-item mb-2"
+                    role="presentation"
+                    whileHover={{ scale: 1.02 }}
                   >
-                    {tab.title}
-                  </motion.h4>
-                </button>
-              </motion.li>
-            ))}
-          </ul>
-
-          {/* Tab Content */}
-          <div className="tab-content">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTabData.id}
-                className="tab-pane active show"
-                id={activeTabData.id}
-                role="tabpanel"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="row justify-content-center">
-                  {activeTabData.items?.map((item, index) => (
-                    <motion.div
-                      key={item.id}
-                      className="col-lg-3 text-center mb-4"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.1, duration: 0.4 }}
+                    <button
+                      className={`nav-link w-100 text-start ${
+                        activeTab === tab.id ? "active show" : ""
+                      }`}
+                      onClick={() => setActiveTab(tab.id)}
+                      aria-selected={activeTab === tab.id}
+                      role="tab"
                     >
-                      <a
-                        href={item.href}
-                        data-gallery="portfolio-gallery-remodeling"
-                        className="glightbox preview-link"
+                      <motion.h4
+                        className="idhal"
+                        animate={{
+                          color: activeTab === tab.id ? "#000" : "#000"
+                        }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <img
-                          src={item.imgSrc}
-                          className="img-fluid rounded shadow-sm"
-                          alt={item.alt}
-                        />
-                      </a>
-                    </motion.div>
-                  ))}
-                </div>
+                        {language === "tamil" ? tab.titletamil : tab.titleeng}
+                      </motion.h4>
+                    </button>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
 
-                <motion.div
-                  className="mt-4 text-end"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  <a
-                    href="all-books.html"
-                    className="btn btn-outline-primary btn-sm"
+            {/* Right Column - Tab Content */}
+            <div className="col-md-10">
+              <div className="tab-content">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTabData.id}
+                    className="tab-pane active show"
+                    id={activeTabData.id}
+                    role="tabpanel"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
                   >
-                    <i className="fas fa-arrow-right me-1"></i> See All
-                  </a>
-                </motion.div>
-              </motion.div>
-            </AnimatePresence>
+                    <div className="row">
+                      {activeTabData.items?.map((item, index) => (
+                        <motion.div
+                          key={item.id}
+                          className="col-lg-6 col-md-4 col-sm-6 mb-4"
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: index * 0.1, duration: 0.4 }}
+                        >
+                          <a
+                            href={item.href}
+                            data-gallery="portfolio-gallery-remodeling"
+                            className="glightbox preview-link"
+                          >
+                            <img
+                              src={item.imgSrc}
+                              className="img-fluid rounded shadow-sm"
+                              alt={item.alt}
+                            />
+                          </a>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    <motion.div
+                      className="mt-auto text-end"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.8 }}
+                      viewport={{ once: true }}
+                    >
+                      <motion.a
+                        href="all-books.html"
+                        className="btn-learn-more"
+                        whileHover={{ scale: 1 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <span className="circle" aria-hidden="true">
+                          <span className="icon arrow"></span>
+                        </span>
+                        <span className="button-text">
+                          <i className="fas fa-arrow-right me-1"></i> Learn more
+                        </span>
+                      </motion.a>
+                    </motion.div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
@@ -1186,7 +1159,9 @@ const Home = () => {
                       />
                     )}
                   </h3>
-                  <h5 className="counter-title">{item.title}</h5>
+                  <h5 className="counter-title">
+                    {language === "tamil" ? item.titletamil : item.titleeng}
+                  </h5>
                 </div>
                 <div
                   className="hover-effect"
@@ -1214,10 +1189,9 @@ const Home = () => {
                 transition={{ duration: 0.5 }}
               >
                 <span className="content-tamil underline-wrapper">
-                  காணொளிகள்
+                  {language === "tamil" ? "காணொளிகள்" : "Videos"}
                   <span className="underline-right"></span>
                 </span>
-                <span className="content-english">Videos</span>
               </motion.h2>
             </div>
           </div>
@@ -1256,10 +1230,7 @@ const Home = () => {
                   >
                     <h5 className="card-title mb-0">
                       <span className="content-tamil d-block">
-                        {video.tamilTitle}
-                      </span>
-                      <span className="content-english d-block">
-                        {video.englishTitle}
+                        {language === "tamil" ? video.tamilTitle : video.englishTitle}
                       </span>
                     </h5>
                   </motion.div>

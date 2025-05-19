@@ -27,10 +27,9 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 }
 };
 
-const Footer = () => {
+const Footer = ({ language }) => {
   const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-  const [language, setLanguage] = useState("english"); // 'english' or 'english'
+  const [subscribed, setSubscribed] = useState(false);// 'english' or 'english'
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,12 +40,9 @@ const Footer = () => {
     setTimeout(() => setSubscribed(false), 3000);
   };
 
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "english" ? "english" : "english"));
-  };
   return (
     <motion.footer
-      className="bg-dark text-white py-5"
+      className="bg-white text-dark py-5"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -59,12 +55,12 @@ const Footer = () => {
             variants={itemVariants}
           >
             <h5 className="fw-bold mb-3">
-              {language === "english"
+              {language === "tamil"
                 ? "த.ஸ்டாலின் குணசேகரன்"
                 : "T. Stalin Gunasekaran"}
             </h5>
             <p className="mb-3">
-              {language === "english"
+              {language === "tamil"
                 ? "கடந்த 40 ஆண்டுகளாக பல்வேறு தளங்களில் சிறந்த சொற்பொழிவாளராக திகழ்கிறார்"
                 : "Has been an excellent orator across various platforms for the past 40 years"}
             </p>
@@ -87,7 +83,7 @@ const Footer = () => {
           {/* Quick Links */}
           <motion.div className="col-lg-4 mb-4 mb-lg-0" variants={itemVariants}>
             <h5 className="fw-bold mb-3 text-start">
-              {language === "english" ? "விரைவு இணைப்புகள்" : "Quick Links"}
+              {language === "tamil" ? "விரைவு இணைப்புகள்" : "Quick Links"}
             </h5>
             <ul className="list-unstyled text-start">
               {[
@@ -100,9 +96,9 @@ const Footer = () => {
                 <li className="mb-2" key={link.id}>
                   <a
                     href={`#${link.id}`}
-                    className="text-white text-decoration-none"
+                    className="text-dark text-decoration-none"
                   >
-                    {language === "english" ? link.ta : link.en}
+                    {language === "tamil" ? link.ta : link.en}
                   </a>
                 </li>
               ))}
@@ -112,16 +108,16 @@ const Footer = () => {
           {/* Newsletter */}
           <motion.div className="col-lg-4 text-start" variants={itemVariants}>
             <h5 className="fw-bold mb-3">
-              {language === "english" ? "செய்திமடல்" : "Newsletter"}
+              {language === "tamil" ? "செய்திமடல்" : "Newsletter"}
             </h5>
             <p className="mb-3">
-              {language === "english"
+              {language === "tamil"
                 ? "புதிய நிகழ்வுகள் மற்றும் செய்திகளைப் பெற இங்கே பதிவு செய்யுங்கள்"
                 : "Subscribe here to get updates and news"}
             </p>
             {subscribed ? (
               <div className="alert alert-success">
-                {language === "english"
+                {language === "tamil"
                   ? "வாழ்த்துக்கள்! வெற்றிகரமாக பதிவு செய்யப்பட்டது."
                   : "Thank you for subscribing!"}
               </div>
@@ -148,22 +144,11 @@ const Footer = () => {
           <div className="col-12 text-center">
             <hr className="my-4" />
             <div className="d-flex justify-content-center align-items-center mb-2">
-              <button
-                onClick={toggleLanguage}
-                className="btn btn-sm btn-outline-light me-2"
-              >
-                {language === "english" ? "English" : "தமிழ்"}
-              </button>
               <p className="mb-0">
                 © {new Date().getFullYear()} T. Stalin Gunasekaran. All Rights
                 Reserved.
               </p>
             </div>
-            <p className="text-muted small">
-              {language === "english"
-                ? "இந்த வலைத்தளம் அன்புடன் உருவாக்கப்பட்டது"
-                : "Made with ❤️"}
-            </p>
           </div>
         </motion.div>
       </div>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../Home/Home.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -21,7 +21,8 @@ const mobileMenuVariants = {
   }
 };
 
-const Navbar = () => {
+const Navbar = ({ language, toggleLanguage }) => {
+  // Receive props
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -38,15 +39,17 @@ const Navbar = () => {
       >
         <div className="container">
           {/* Mobile-only short name */}
-          <a className="navbar-brand fw-bold d-lg-none" href="#home">
-            குணசேகரன்
-          </a>
-          
+          <NavLink className="navbar-brand fw-bold d-lg-none" to="/">
+            {language === "tamil" ? "குணசேகரன்" : "Gunasekaran"}
+          </NavLink>
+
           {/* Desktop-only full name */}
-          <a className="navbar-brand fw-bold d-none d-lg-block" href="#home">
-            த. ஸ்டாலின் குணசேகரன்
-          </a>
-          
+          <NavLink className="navbar-brand fw-bold d-none d-lg-block" to="/">
+            {language === "tamil"
+              ? "த. ஸ்டாலின் குணசேகரன்"
+              : "T. Stalin Gunasekaran"}
+          </NavLink>
+
           <button
             className="navbar-toggler ms-auto border-0"
             type="button"
@@ -59,37 +62,76 @@ const Navbar = () => {
           <div className="desktop-menu d-none d-lg-block">
             <ul className="navbar-nav ms-auto navcontentmain">
               <li className="nav-item navcontent">
-                <Link className="nav-link" to="/">
-                  முகப்பு
-                </Link>
+                <NavLink
+                  to="/home"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active-nav-link" : "nav-link"
+                  }
+                  end
+                >
+                  {language === "tamil" ? "முகப்பு" : "Home"}
+                </NavLink>
               </li>
               <li className="nav-item navcontent">
-                <Link className="nav-link" to="/about">
-                  பற்றி
-                </Link>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active-nav-link" : "nav-link"
+                  }
+                >
+                  {language === "tamil" ? "பற்றி" : "About"}
+                </NavLink>
               </li>
               <li className="nav-item navcontent">
-                <a className="nav-link" href="#books">
-                  நூல்கள்
-                </a>
+                <NavLink
+                  to="/books"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active-nav-link" : "nav-link"
+                  }
+                >
+                  {language === "tamil" ? "நூல்கள்" : "Books"}
+                </NavLink>
               </li>
               <li className="nav-item navcontent">
-                <a className="nav-link" href="#meetings">
-                  சந்திப்புகள்
-                </a>
+                <NavLink
+                  to="/meetings"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active-nav-link" : "nav-link"
+                  }
+                >
+                  {language === "tamil" ? "சந்திப்புகள்" : "Meetings"}
+                </NavLink>
               </li>
               <li className="nav-item navcontent">
-                <a className="nav-link" href="#videos">
-                  புகைப்படங்கள்
-                </a>
+                <NavLink
+                  to="/#videos"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active-nav-link" : "nav-link"
+                  }
+                >
+                  {language === "tamil" ? "புகைப்படங்கள்" : "Gallery"}
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link navcontent1" href="contact.html">
-                  தொடர்பு
-                </a>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link navcontent1 active-nav-link"
+                      : "nav-link navcontent1"
+                  }
+                >
+                  {language === "tamil" ? "தொடர்பு" : "Contact"}
+                </NavLink>
               </li>
             </ul>
           </div>
+          <button
+            onClick={toggleLanguage} // Use the prop instead of local state
+            className="language-toggle"
+          >
+            {language === "tamil" ? "English" : "தமிழ்"}
+          </button>
         </div>
       </motion.nav>
 
@@ -104,34 +146,73 @@ const Navbar = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item navcontent">
-              <Link className="nav-link" to="/" onClick={toggleMenu}>
+              <NavLink
+                to="/home"
+                onClick={toggleMenu}
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-nav-link" : "nav-link"
+                }
+                end
+              >
                 முகப்பு
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item navcontent">
-              <Link className="nav-link" to="/about" onClick={toggleMenu}>
+              <NavLink
+                to="/about"
+                onClick={toggleMenu}
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-nav-link" : "nav-link"
+                }
+              >
                 பற்றி
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item navcontent">
-              <a className="nav-link" href="#books" onClick={toggleMenu}>
+              <NavLink
+                to="/books"
+                onClick={toggleMenu}
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-nav-link" : "nav-link"
+                }
+              >
                 நூல்கள்
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item navcontent">
-              <a className="nav-link" href="#meetings" onClick={toggleMenu}>
+              <NavLink
+                to="/meetings"
+                onClick={toggleMenu}
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-nav-link" : "nav-link"
+                }
+              >
                 சந்திப்புகள்
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item navcontent">
-              <a className="nav-link" href="#videos" onClick={toggleMenu}>
+              <NavLink
+                to="/videos"
+                onClick={toggleMenu}
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-nav-link" : "nav-link"
+                }
+              >
                 புகைப்படங்கள்
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link navcontent1" href="contact.html" onClick={toggleMenu}>
+              <NavLink
+                to="/contact"
+                onClick={toggleMenu}
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link navcontent1 active-nav-link"
+                    : "nav-link navcontent1"
+                }
+              >
                 தொடர்பு
-              </a>
+              </NavLink>
             </li>
           </ul>
         </motion.div>
