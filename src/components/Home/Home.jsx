@@ -431,7 +431,6 @@ const Home = ({ language }) => {
         </motion.div>
 
         <div className="right-images">
-          
           {slides.map((slide, index) => (
             <div
               key={slide.id}
@@ -806,7 +805,8 @@ const Home = ({ language }) => {
                 <span className="icon arrow"></span>
               </span>
               <span className="button-text">
-                <i className="fas fa-arrow-right me-1"></i>{language === "tamil" ? "மேலும் பார்க்க" : "Learn more"} 
+                <i className="fas fa-arrow-right me-1"></i>
+                {language === "tamil" ? "மேலும் பார்க்க" : "Learn more"}
               </span>
             </motion.a>
           </motion.div>
@@ -928,8 +928,6 @@ const Home = ({ language }) => {
                 <div className="card h-100 book-card shadow-sm hover-effect-card">
                   <div className="row g-0 h-100 position-relative">
                     {" "}
-                    {/* Added position-relative */}
-                    {/* Image column with higher z-index */}
                     <div className="col-md-5 d-flex align-items-center p-2 position-relative z-2">
                       {" "}
                       {/* Added z-2 */}
@@ -1231,7 +1229,9 @@ const Home = ({ language }) => {
                   >
                     <h5 className="card-title mb-0">
                       <span className="content-tamil d-block">
-                        {language === "tamil" ? video.tamilTitle : video.englishTitle}
+                        {language === "tamil"
+                          ? video.tamilTitle
+                          : video.englishTitle}
                       </span>
                     </h5>
                   </motion.div>

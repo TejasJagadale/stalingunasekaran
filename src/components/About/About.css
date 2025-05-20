@@ -179,12 +179,56 @@
 }
 
 .timeline-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s ease;
   position: relative;
-  margin-bottom: 3rem;
   width: 50%;
   padding: 0 3rem;
-  animation: fadeIn 1s ease-out forwards;
-  opacity: 0;
+  margin-bottom: 3rem;
+}
+
+.timeline-item.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item.left.in-view {
+  animation: slideInLeft 0.7s ease-out forwards;
+}
+
+.timeline-item.right.in-view {
+  animation: slideInRight 0.7s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
 }
 
 .timeline-item:nth-child(odd) {
