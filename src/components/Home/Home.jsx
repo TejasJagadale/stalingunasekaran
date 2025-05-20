@@ -806,7 +806,7 @@ const Home = ({ language }) => {
                 <span className="icon arrow"></span>
               </span>
               <span className="button-text">
-                <i className="fas fa-arrow-right me-1"></i> Learn more
+                <i className="fas fa-arrow-right me-1"></i>{language === "tamil" ? "மேலும் பார்க்க" : "Learn more"} 
               </span>
             </motion.a>
           </motion.div>

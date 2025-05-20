@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react"; // Add useState
+import { useState, useEffect } from "react"; // Add useState
+import Aos from "aos";
 import "./App.css";
 import Home from "./components/Home/Home.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
@@ -13,6 +14,14 @@ function App() {
   const toggleLanguage = () => {
     setLanguage((prev) => (prev === "tamil" ? "english" : "tamil"));
   };
+
+    useEffect(() => {
+    Aos.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+  }, []);
 
   return (
     <Router>
