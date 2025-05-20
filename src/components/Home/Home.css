@@ -6,7 +6,7 @@
   --light-color: #f8f9fa;
 }
 
-.language-toggle{
+.language-toggle {
   border: none;
   background-color: white;
 }
@@ -73,7 +73,6 @@ body {
   /* font-size: 23px; */
 }
 
-
 /* Active link styles */
 .navbar .active-nav-link {
   color: var(--primary-color) !important;
@@ -134,7 +133,9 @@ body {
 }
 
 .navcontent1.active-nav-link {
-  background-color: var(--primary-color-dark); /* Slightly darker shade for active state */
+  background-color: var(
+    --primary-color-dark
+  ); /* Slightly darker shade for active state */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -175,8 +176,6 @@ body {
   justify-content: space-between;
   height: 92vh;
   box-sizing: border-box;
-  /* background-color: #e1e1e1; */
-  /* fallback background */
 }
 
 .imagebooks {
@@ -1099,7 +1098,7 @@ footer {
   }
 
   .mobilemeet {
-    margin-top: 20px;
+    margin-top: 5px;
   }
 
   .section-title {

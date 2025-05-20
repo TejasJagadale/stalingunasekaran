@@ -35,14 +35,14 @@ const Footer = ({ language }) => {
     e.preventDefault();
     // Here you would typically send the email to your backend
     console.log("Subscribed with:", email);
-    setSubscribed(true);
+    setSubscribed(true);  
     setEmail("");
     setTimeout(() => setSubscribed(false), 3000);
   };
 
   return (
     <motion.footer
-      className="bg-white text-dark py-5"
+      className="bg-white text-dark py-4"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -65,16 +65,16 @@ const Footer = ({ language }) => {
                 : "Has been an excellent orator across various platforms for the past 40 years"}
             </p>
             <div className="social-icons">
-              <a href="#" className="text-white me-3">
+              <a href="#" className="text-dark me-3">
                 <FaFacebook size={20} />
               </a>
-              <a href="#" className="text-white me-3">
+              <a href="#" className="text-dark me-3">
                 <FaTwitter size={20} />
               </a>
-              <a href="#" className="text-white me-3">
+              <a href="#" className="text-dark me-3">
                 <FaYoutube size={20} />
               </a>
-              <a href="#" className="text-white">
+              <a href="#" className="text-dark">
                 <FaInstagram size={20} />
               </a>
             </div>
