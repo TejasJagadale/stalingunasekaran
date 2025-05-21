@@ -21,22 +21,9 @@ const mobileMenuVariants = {
   }
 };
 
-const dropdownVariants = {
-  hidden: { 
-    opacity: 0,
-    y: -10,
-    transition: { duration: 0.2, ease: "easeOut" }
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.2, ease: "easeOut" }
-  }
-};
-
 const Navbar = ({ language, toggleLanguage }) => {
+  // Receive props
   const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -95,87 +82,26 @@ const Navbar = ({ language, toggleLanguage }) => {
                   {language === "tamil" ? "பற்றி" : "About"}
                 </NavLink>
               </li>
-              
-              {/* Dropdown Menu Item */}
-              <li 
-                className="nav-item dropdown navcontent"
-                onMouseEnter={() => setIsDropdownOpen(true)}
-                onMouseLeave={() => setIsDropdownOpen(false)}
-              >
-                <span className="nav-link dropdown-toggle cursor-pointer">
-                  {language === "tamil" ? "மேலும்" : "More"} <i className="bi bi-chevron-down"></i>
-                </span>
-                
-                <motion.ul
-                  className="dropdown-content"
-                  initial="hidden"
-                  animate={isDropdownOpen ? "visible" : "hidden"}
-                  variants={dropdownVariants}
+              <li className="nav-item navcontent">
+                <NavLink
+                  to="/books"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active-nav-link" : "nav-link"
+                  }
                 >
-                  <li>
-                    <NavLink
-                      to="/books"
-                      className={({ isActive }) =>
-                        isActive ? "dropdown-item active-nav-link" : "dropdown-item"
-                      }
-                    >
-                      {language === "tamil" ? "நூல்கள்" : "Books"}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/meetings"
-                      className={({ isActive }) =>
-                        isActive ? "dropdown-item active-nav-link" : "dropdown-item"
-                      }
-                    >
-                      {language === "tamil" ? "சந்திப்புகள்" : "Meetings"}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/meetings"
-                      className={({ isActive }) =>
-                        isActive ? "dropdown-item active-nav-link" : "dropdown-item"
-                      }
-                    >
-                      {language === "tamil" ? "கட்டுரைகள்" : "Meetings"}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/meetings"
-                      className={({ isActive }) =>
-                        isActive ? "dropdown-item active-nav-link" : "dropdown-item"
-                      }
-                    >
-                      {language === "tamil" ? "உரைகள்" : "Meetings"}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/meetings"
-                      className={({ isActive }) =>
-                        isActive ? "dropdown-item active-nav-link" : "dropdown-item"
-                      }
-                    >
-                      {language === "tamil" ? "பேட்டிகள்" : "Meetings"}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/meetings"
-                      className={({ isActive }) =>
-                        isActive ? "dropdown-item active-nav-link" : "dropdown-item"
-                      }
-                    >
-                      {language === "tamil" ? "செய்திகள்" : "Meetings"}
-                    </NavLink>
-                  </li>
-
-                </motion.ul>
+                  {language === "tamil" ? "நூல்கள்" : "Books"}
+                </NavLink>
               </li>
-
+              <li className="nav-item navcontent">
+                <NavLink
+                  to="/meetings"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active-nav-link" : "nav-link"
+                  }
+                >
+                  {language === "tamil" ? "சந்திப்புகள்" : "Meetings"}
+                </NavLink>
+              </li>
               <li className="nav-item navcontent">
                 <NavLink
                   to="/photos"
@@ -186,7 +112,6 @@ const Navbar = ({ language, toggleLanguage }) => {
                   {language === "tamil" ? "புகைப்படங்கள்" : "Gallery"}
                 </NavLink>
               </li>
-              
               <li className="nav-item">
                 <NavLink
                   to="/contact"
@@ -202,7 +127,7 @@ const Navbar = ({ language, toggleLanguage }) => {
             </ul>
           </div>
           <button
-            onClick={toggleLanguage}
+            onClick={toggleLanguage} // Use the prop instead of local state
             className="language-toggle"
           >
             {language === "tamil" ? "English" : "தமிழ்"}
